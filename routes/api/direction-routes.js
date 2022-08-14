@@ -5,8 +5,8 @@ const {
   createCourse,
   updateCourse,
   deleteCourse,
-  addReaction,
-  removeReaction,
+  addDirection,
+  removeDirection,
 } = require("../../controllers/course-controller");
 router.route("/").get(getAllCourse).post(createCourse);
 router
@@ -14,7 +14,7 @@ router
   .get(getCourseById)
   .put(updateCourse)
   .delete(deleteCourse);
-router.route("/:courseId/reactions").post(addReaction);
-router.route("/:courseId/reactions/:reactionId").delete(removeReaction);
+router.route("/:courseId/directions").post(addDirection);
+router.route("/:courseId/directions/:directionId").delete(removeDirection);
 
 module.exports = router;

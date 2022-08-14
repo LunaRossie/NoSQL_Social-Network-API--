@@ -5,7 +5,7 @@ const courseController = {
     getAllCourse(req, res) {
         Course.find({})
           .populate({
-            path: "reactions",
+            path: "directions",
             select: "-__v",
           })
           .select("-__v")
@@ -20,7 +20,7 @@ const courseController = {
       getCourseById({ params }, res) {
         Course.findOne({ _id: params.id })
           .populate({
-            path: "reactions",
+            path: "directions",
             select: "-__v",
           })
           .select("-__v")
@@ -96,10 +96,10 @@ const courseController = {
             .catch((err) => res.json(err));
         },
 
-        addReaction({ params, body }, res) {
+        addDirection({ params, body }, res) {
             Course.findOneAndUpdate(
               { _id: params.courseId },
-              { $addToSet: { reactions: body } },
+              { $addToSet: { directions: body } },
               { new: true, runValidators: true }
             )
               .then((dbCourseData) => {
@@ -112,10 +112,10 @@ const courseController = {
               .catch((err) => res.json(err));
           },
 
-          removeReaction({ params }, res) {
+          removeDirection({ params }, res) {
             Course.findOneAndUpdate(
               { _id: params.courseId },
-              { $pull: { reactions: { reactionId: params.reactionId } } },
+              { $pull: { directions: { directionId: params.directionId } } },
               { new: true }
             )
               .then((dbCourseData) => res.json(dbCourseData))

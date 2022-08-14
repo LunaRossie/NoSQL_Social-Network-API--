@@ -1,14 +1,14 @@
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
-const ReactionSchema = new Schema(
+const DirectionSchema = new Schema(
   {
-    reactionId: {
+    directionId: {
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId(),
     },
 
-    reactionBody: {
+    directionBody: {
       type: String,
       required: true,
       maxlength: 280,
@@ -52,7 +52,7 @@ const CourseSchema = new Schema(
       type: String,
       required: true,
     },
-    reactions: [ReactionSchema],
+    directions: [DirectionSchema],
   },
   {
     toJSON: {
@@ -63,8 +63,8 @@ const CourseSchema = new Schema(
   }
 );
 
-CourseSchema.virtual("reactionCount").get(function () {
-  return this.reactions.length;
+CourseSchema.virtual("directionCount").get(function () {
+  return this.directions.length;
 });
 
 const Course = model("Course", CourseSchema);
