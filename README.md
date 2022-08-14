@@ -48,6 +48,8 @@ https://lunarossie.github.io/NoSQL_Social-Network-API--/
 
 ## Video Link
 
+https://www.youtube.com/watch?v=kZbu4NYey6s
+
 
 ## Questions
 
